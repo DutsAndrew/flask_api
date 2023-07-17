@@ -1,7 +1,6 @@
-from flask import Blueprint, jsonify
+from flask import Blueprint
+from controllers import app_controller
 
 app_blueprint = Blueprint('app', __name__)
 
-@app_blueprint.route('/', methods=['GET'])
-def index():
-    return jsonify({'message': 'This is an API endpoint'})
+app_blueprint.route('/', methods=['GET'])(app_controller.index)

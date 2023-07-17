@@ -1,11 +1,9 @@
-from flask import Blueprint, jsonify
+# routes/api_route.py
+from flask import Blueprint
+from controllers import api_controller
 
 api_blueprint = Blueprint('api', __name__, url_prefix='/api')
 
-@api_blueprint.route('/', methods=['GET'])
-def index():
-    return jsonify({'message': 'Welcome to the API check out the docs to get access to the correct data'})
-
-@api_blueprint.route('/users', methods=['GET'])
-def users():
-  return jsonify({'users': ['John Doe', 'Jane Doe']})
+# Use the function names directly as the view functions for the routes
+api_blueprint.route('/', methods=['GET'])(api_controller.index)
+api_blueprint.route('/users', methods=['GET'])(api_controller.users)

@@ -4,14 +4,14 @@ from flask_limiter import Limiter
 from dotenv import load_dotenv
 import json
 
+# Import routes
+from routes.api_route import api_blueprint
+from routes.app_route import app_blueprint
+
 load_dotenv()
 
 app = Flask(__name__)
 CORS(app)
-
-# Import routes
-from routes.api_route import api_blueprint
-from routes.app_route import app_blueprint
 
 # Import app after defining the routes
 app.register_blueprint(api_blueprint)
